@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Town — Spot the Difference</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b1226; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Georgia, serif; }
+  #wrap { width: min(1280px, 100vw); }
+  #game { display: block; width: 100%; height: auto; }
+  #toolbar { display: flex; gap: 12px; justify-content: center; padding: 10px 0 4px; }
+  #toolbar button { font-family: Georgia, serif; font-size: 16px; padding: 8px 18px; border-radius: 8px; border: 1px solid #3a4a6b; background: #1c2a4a; color: #f5f0e1; cursor: pointer; }
+  #toolbar button:hover:not(:disabled) { background: #2a3c66; }
+  #toolbar button:disabled { opacity: 0.4; cursor: default; }
+  #overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(11, 18, 38, 0.72); z-index: 10; }
+  #overlay-card { background: #1c2a4a; border: 2px solid #f7c948; border-radius: 16px; padding: 32px 44px; text-align: center; max-width: 560px; color: #f5f0e1; }
+  #overlay-title { margin: 0 0 12px; font-size: 34px; }
+  #overlay-text { margin: 0 0 20px; font-size: 17px; line-height: 1.5; color: #c8d4ea; }
+  #overlay-btn { font-family: Georgia, serif; font-size: 20px; padding: 12px 32px; border-radius: 10px; border: none; background: #f7c948; color: #10182e; cursor: pointer; }
+  #overlay-btn:hover { background: #ffd95e; }
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" aria-label="Lantern Town spot the difference: two near-identical pictures side by side"></canvas>
+  <div id="toolbar">
+    <button id="hint-btn" type="button">Hint (3)</button>
+    <button id="restart-btn" type="button">Restart round</button>
+    <button id="menu-btn" type="button">Menu</button>
+  </div>
+</div>
+<div id="overlay">
+  <div id="overlay-card">
+    <h1 id="overlay-title"></h1>
+    <p id="overlay-text"></p>
+    <button id="overlay-btn" type="button"></button>
+  </div>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
